@@ -1,8 +1,16 @@
 import { Route, Routes } from "react-router-dom";
 import Home from "./components/Home";
 import Dashboard from "./components/Dashboard";
+import useScripts from "./hooks/useScripts";
+import { getScriptSrcs, scriptSrcArray } from "./utils/utils";
+import { useEffect } from "react";
 
 function App() {
+
+  const initScripts = useScripts({
+    srcs: scriptSrcArray,
+  });
+
   return (
     <div className="full">
       <Routes>
