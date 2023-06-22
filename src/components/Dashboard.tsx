@@ -7,7 +7,7 @@ function Dashboard() {
   const navigate = useNavigate();
   const location = useLocation();
   const user = location.state?.user;
-  const fileUrl = "http://localhost:5173/sample.pdf";
+  const fileUrl = "http://localhost:5173/sample.pptx";
   /*
   || {
     name: "Arslan Jan",
