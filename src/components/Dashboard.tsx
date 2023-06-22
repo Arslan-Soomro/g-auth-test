@@ -6,6 +6,7 @@ import {
   Text,
   Image,
 } from "@chakra-ui/react";
+import DocViewer from "./DocViewer";
 
 function Dashboard() {
   const navigate = useNavigate();
@@ -25,6 +26,7 @@ function Dashboard() {
 
   return (
     <Container px={5} py={10}>
+      <DocViewer />
       <Flex direction="row" gap="10px">
         <Image
           borderRadius="md"
