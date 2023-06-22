@@ -6,15 +6,26 @@ import { ChakraProvider } from "@chakra-ui/react";
 // Add react router 6
 import { BrowserRouter } from "react-router-dom";
 import { GoogleOAuthProvider } from "@react-oauth/google";
+import { loadAllScripts } from "./utils/utils.ts";
 
-ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <GoogleOAuthProvider clientId={import.meta.env.VITE_G_CLIENT_ID}>
-        <ChakraProvider>
-          <App />
-        </ChakraProvider>
-      </GoogleOAuthProvider>
-    </BrowserRouter>
-  </React.StrictMode>
-);
+loadAllScripts("./src/")
+  .then(function () {
+    console.log(
+      "All scripts have been loaded successfully. Rendering React App..."
+    );
+    ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
+      <React.StrictMode>
+        <BrowserRouter>
+          <GoogleOAuthProvider clientId={import.meta.env.VITE_G_CLIENT_ID}>
+            <ChakraProvider>
+              <App />
+            </ChakraProvider>
+          </GoogleOAuthProvider>
+        </BrowserRouter>
+      </React.StrictMode>
+    );
+  })
+  .catch(function (error) {
+    console.error("Error occurred while loading scripts:", error);
+    // Handle the error accordingly
+  });

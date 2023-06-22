@@ -1,22 +1,26 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 
-function DocViewer() {
-  const viewerRef = useRef(null);
+interface Props {
+    fileUrl: string;
+}
 
+function DocViewer({ fileUrl } : Props) {
   useEffect(() => {
-    const viewerElement = viewerRef.current;
-    console.log("Element: ", viewerElement);
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     //@ts-ignore
-    // $(viewerElement).css("color", "red");
-    /*
-    .officeToHtml({
-        url: "https://www.africau.edu/images/default/sample.pdf",
-      });
-    */
+    $("#resolte-contaniner").officeToHtml({
+      url: fileUrl,
+    });
   }, []);
 
-  return <div ref={viewerRef}>hello world</div>;
+  return (
+    <div style={{ width: "600px", height: "600px", marginTop: "20px", overflow: "hidden" }}>
+      <div
+        id="resolte-contaniner"
+        style={{ width: "100%", height: "100%" }}
+      ></div>
+    </div>
+  );
 }
 
 export default DocViewer;

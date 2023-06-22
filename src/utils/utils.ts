@@ -19,6 +19,26 @@ export function getScriptSrcs(prefix: string) {
   return scriptSrcArray.map((src) => prefix + src);
 }
 
+export function loadAllScripts(prefix: string) {
+  const promises = [];
+
+  for (let i = 0; i < scriptSrcArray.length; i++) {
+    const src = scriptSrcArray[i];
+
+    const promise = new Promise(function (resolve, reject) {
+      const script = document.createElement("script");
+      script.src = prefix + src;
+      script.async = true;
+      script.onload = resolve;
+      script.onerror = reject;
+      document.body.appendChild(script);
+    });
+    promises.push(promise);
+  }
+
+  return Promise.all(promises);
+}
+
 export const pdfSetting = {
   setLang: "he",
   thumbnailViewBtn: true,
