@@ -7,18 +7,10 @@ function Dashboard() {
   const navigate = useNavigate();
   const location = useLocation();
   const user = location.state?.user;
-  const fileUrl = "http://localhost:5173/sample.pptx";
-  /*
-  || {
-    name: "Arslan Jan",
-    email: "Arslanjs.dev@gmail.com",
-    picture:
-      "https://images.unsplash.com/photo-1590086782957-93c06ef21604?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80",
-  };
-  */
+  const fileUrl = "http://localhost:5173/sample.docx";
 
   useEffect(() => {
-    // Only give access, if there is user location state
+    // Only give access, if there is user in location state
     console.log("User: ", user);
     if (!user) navigate("/");
   }, []);

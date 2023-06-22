@@ -3,11 +3,11 @@ import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
 import { ChakraProvider } from "@chakra-ui/react";
-// Add react router 6
 import { BrowserRouter } from "react-router-dom";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import { loadAllScripts } from "./utils/utils.ts";
 
+// First load all scripts only then render the app
 loadAllScripts("./src/")
   .then(function () {
     console.log(
@@ -27,5 +27,4 @@ loadAllScripts("./src/")
   })
   .catch(function (error) {
     console.error("Error occurred while loading scripts:", error);
-    // Handle the error accordingly
   });

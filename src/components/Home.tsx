@@ -28,9 +28,6 @@ function Home() {
     onError: (res: any) => {
       console.log("error", res);
     },
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    //@ts-ignore
-    auto_select: true,
   });
 
   return (
